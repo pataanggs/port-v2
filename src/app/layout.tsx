@@ -1,47 +1,51 @@
-import type { Metadata } from 'next';
-import {
-  Bricolage_Grotesque,
-  Instrument_Sans,
-  Montserrat
-} from 'next/font/google';
-import '@/styles/globals.css';
+"use client"
 
-import { Toaster } from '@/components/ui/sonner';
+import { Montserrat } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/navbar";
+import ContactBar from "@/components/contact-bar";
 
-import { metadata as meta } from '@/app/config';
-import Loader from '@/app/loader';
-import Providers from '@/app/providers';
 
-import { createMetadata } from '@/lib/metadata';
 
-// https://iamsteve.me/blog/the-best-ink-trap-typefaces-for-websites
-const bricolage_grotesque = Bricolage_Grotesque({ subsets: ['latin'] });
-
-export const metadata = createMetadata({
-  title: {
-    absolute: meta.site.title,
-    template: `%s | ${meta.site.title}`
-  },
-  description: meta.site.description,
-  twitter: {
-    title: meta.site.title,
-    description: meta.site.description
-  }
+const MontserratRegular = Montserrat({
+  weight: "400",
+  style: "normal",
+  subsets: ["latin"],
+  variable: "--pregular",
 });
 
+const MontserratBlack = Montserrat({
+  weight: "900",
+  style: "normal",
+  subsets: ["latin"],
+  variable: "--pblack"
+});
+
+
+
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={bricolage_grotesque.className}>
-        <Providers>
-          <Loader />
-          {children}
-          <Toaster />
-        </Providers>
+    <html lang="en" suppressHydrationWarning  className={`${MontserratRegular.variable} ${MontserratBlack.variable}`}>
+      <head>
+        <title>Portfolio | Home</title>
+        <meta name="Portfolio" content="my personal portfolio, coded by karan using nextjs." />
+      </head>
+      <body>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <Navbar/>   
+        <ContactBar/> 
+        {children}
+        </ThemeProvider>
       </body>
     </html>
   );

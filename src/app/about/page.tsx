@@ -1,63 +1,81 @@
-'use client';
-import TextReveal from '@/components/motion/text-reveal';
+"use client";
+import { useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
+import { BackgroundLines } from "@/components/ui/background-lines";
+import { Timeline } from "@/components/ui/timeline";
+import { data } from "@/lib/data";
+import StyleButton from "@/components/style-button"; // Assuming this is your custom button component
+import { Download } from "lucide-react"; // Using an icon for the download button
 
-import React from 'react';
-import Line from '@/components/motion/line';
+const About = () => {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
-export default function About() {
-  // const { scrollYProgress } = useScroll();
-  // const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
-  // todo: add ability for different variants of about page
+  React.useEffect(() => {
+    document.title = "Portfolio | About";
+  }, []);
 
   return (
-    <main className="my-24 flex-1">
-      <section
-        className="relative flex min-h-[calc(50dvh)] items-center justify-center"
-        id="hero"
-      >
-        <div className="flex flex-col items-center md:max-w-7xl">
-          <h1 className="leading-wide tracking-relaxed text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
-            <TextReveal delay={0.1}>
-              A young tech enthusiast who loves to code
-            </TextReveal>
-          </h1>
+    <div
+      className="h-auto w-full relative overflow-clip flex-col items-center"
+      ref={ref}
+    >
+      <GoogleGeminiEffect
+        pathLengths={[
+          pathLengthFirst,
+          pathLengthSecond,
+          pathLengthThird,
+          pathLengthFourth,
+          pathLengthFifth,
+        ]}
+        className="fixed top-24 w-full"
+      />
 
-          <Line className={'mt-16'} />
+      <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+        <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+          This Is About, <br /> Fathan Kartagama a.k.a Pataangg.
+        </h2>
+        <p className="max-w-4xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-justify">
+          As a passionate third-year Informatics Engineering student at ITERA, I
+          am deeply engaged in coding and specialize in developing efficient and
+          innovative software solutions. With a solid foundation in both
+          front-end and back-end technologies, I excel in creating dynamic and
+          responsive web applications. My skill set includes working with
+          programming languages like JavaScript, Python, and frameworks such as
+          React and Node.js. I am also proficient in database management
+          systems, including MongoDB and SQL. I am committed to continuous
+          learning and staying updated with industry advancements, enabling me
+          to implement cutting-edge technologies in my projects.
+        </p>
+
+        {/* CV Download Button */}
+        <div className="mt-6">
+          <a
+            href="../../assets/CV Fathan Andi.pdf" // Replace this with the actual path to your PDF file
+            download="Fathan_Kartagama_CV.pdf" // This will be the downloaded file name
+          >
+            <StyleButton
+            text="Download CV"
+            icon={<Download size={20} className="mx-auto" />}
+            onPress={() => {}}
+            />
+          </a>
         </div>
-        {/*<motion.div*/}
-        {/*  className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"*/}
-        {/*  style={{ opacity }}*/}
-        {/*  animate={{ y: [0, 10, 0] }}*/}
-        {/*  transition={{ duration: 1.5, repeat: Infinity }}*/}
-        {/*>*/}
-        {/*  <ChevronDown className="h-8 w-8" />*/}
-        {/*</motion.div>*/}
-      </section>
-      {/*<section*/}
-      {/*  className="relative flex min-h-[calc(50dvh)] items-center justify-center bg-foreground text-background"*/}
-      {/*  id="skills"*/}
-      {/*>*/}
-      {/*  <div className="flex flex-col items-center md:max-w-7xl">*/}
-      {/*    <h1 className="leading-wide tracking-relaxed text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">*/}
-      {/*      <TextReveal delay={0.1}>*/}
-      {/*        A young tech enthusiast who loves to code*/}
-      {/*      </TextReveal>*/}
-      {/*    </h1>*/}
-      {/*    <Line*/}
-      {/*      className={'mt-16'}*/}
-      {/*      borderColor={'text-muted-foreground/50'}*/}
-      {/*    />*/}
-      {/*  </div>*/}
-      {/*  /!*<motion.div*!/*/}
-      {/*  /!*  className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"*!/*/}
-      {/*  /!*  style={{ opacity }}*!/*/}
-      {/*  /!*  animate={{ y: [0, 10, 0] }}*!/*/}
-      {/*  /!*  transition={{ duration: 1.5, repeat: Infinity }}*!/*/}
-      {/*  /!*>*!/*/}
-      {/*  /!*  <ChevronDown className="h-8 w-8" />*!/*/}
-      {/*  /!*</motion.div>*!/*/}
-      {/*</section>*/}
-    </main>
+      </BackgroundLines>
+
+      <Timeline data={data} />
+    </div>
   );
-}
+};
+
+export default React.memo(About);
