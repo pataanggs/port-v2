@@ -61,8 +61,8 @@ const About = () => {
         {/* CV Download Button */}
         <div className="mt-6">
           <a
-            href="../../assets/CV Fathan Andi.pdf" // Replace this with the actual path to your PDF file
-            download="Fathan_Kartagama_CV.pdf" // This will be the downloaded file name
+            href="../../public/CV Fathan Andi.pdf"
+            download="Fathan_Kartagama_CV.pdf"
           >
             <StyleButton
             text="Download CV"
