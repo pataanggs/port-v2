@@ -61,7 +61,7 @@ const About = () => {
         {/* CV Download Button */}
         <div className="mt-6">
           <a
-            href="../../public/CV Fathan Andi.pdf"
+            href="../../public/CV Fathan Andi.pdf "
             download="Fathan_Kartagama_CV.pdf"
           >
             <StyleButton

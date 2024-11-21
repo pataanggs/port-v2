@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 My Portfolio Website 🌟
 
-## Getting Started
+Welcome to the repository of my personal **Portfolio Website**! 🎉 Designed and developed with passion, this project showcases my skills, projects, and journey as a developer. Dive in and explore! 🚀
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔥 Key Features
+- **Dynamic Page Transitions**: Experience smooth stair-stepping and fade-in effects as you navigate through pages.
+- **Responsive Design**: Built for all devices—desktop, tablet, and mobile. 🖥️📱
+- **Dark & Light Themes**: Switch between themes effortlessly, powered by **Next.js Themes**.
+- **Interactive Loader**: A captivating percentage-based loading animation ensures every detail feels alive. ⚡
+- **Floating Navigation Bar**: A smart navbar that auto-hides while scrolling and stays out of your way.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
+This portfolio is crafted with modern tools and technologies:
+- **Next.js**: The React framework for production.
+- **Framer Motion**: For animations and transitions.
+- **Tailwind CSS**: Utility-first CSS for styling.
+- **TypeScript**: Ensuring a robust and scalable codebase.
+- **Lucide Icons**: Sleek and modern icons for UI elements.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Features Breakdown
 
-To learn more about Next.js, take a look at the following resources:
+### 🎨 Design
+- **Themes**: Dark mode and light mode to suit your preference.
+- **Aurora Backgrounds**: Eye-catching gradients inspired by auroras.
+- **Custom Scrollbar**: Styled scrollbar matching the website theme.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ⚡ Animations
+- **Loading Page**: A seamless number ticker animation from 0% to 100%.
+- **Page Transitions**: Stair-stepping transitions with smooth fades.
+- **Interactive Navbar**: Auto-hide and reappear functionality during scroll.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 How to Run Locally
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/pataanggs/port-v2.git
+   ```
+2. **Navigate to the project directory**:
+   ```bash
+   cd portfolio-website
+   ```
+3. **Install dependencies**:
+   ```bash
+   npm install
+   #or
+   pnpm install
+   #or
+   yarn install
+   #or
+   bun install
+   ```
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   #or
+   pnpm run dev
+   #or
+   bun run dev
+   #or 
+   yarn dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🌐 Live Demo
+
+Check out the live version of my portfolio here: [Live Demo](https://port-v2-alpha.vercel.app/)
+
+---
+
+## 🙌 Acknowledgements
+This project wouldn’t have been possible without the following:
+- **Next.js Documentation**: [https://nextjs.org/docs](https://nextjs.org/docs)
+- **Framer Motion**: [https://www.framer.com/motion/](https://www.framer.com/motion/)
+- **Tailwind CSS**: [https://tailwindcss.com/](https://tailwindcss.com/)
+
+---
+
+## 💌 Contact Me
+
+Feel free to reach out to me:
+- **Email**: kartagama.fathan@gmail.com
+- **Instagram**: [@Pataangg](https://instagram.com/pataangg)
+- **GitHub**: [@pataanggs](https://github.com/pataanggs)
+
+---
+
+
+
+Enjoy exploring my portfolio, and let me know what you think! 🚀
