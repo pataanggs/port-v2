@@ -4,6 +4,7 @@ import Wasteless from "@/assets/wasteless.png";
 import DieselDragrace from "@/assets/dieseldragrace.webp";
 import Porto from "@/assets/porto.png";
 import Porto2 from "@/assets/porto2.png";
+import TheForestKeeper from "@/assets/TheForestKeeper.jpg";
 
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
@@ -48,6 +49,12 @@ const GridBackground = () => {
         title="Portofolio v2"
         link="https://github.com/pataanggs/port-v2"
         range={400}
+      />
+      <FloatICon
+        source={TheForestKeeper}
+        title="The Forest Keeper"
+        link="https://malasngodingco.itch.io/the-forest-keeper"
+        range={500}
       />
     </div>
   );

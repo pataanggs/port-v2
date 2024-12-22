@@ -1,13 +1,27 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import NumberTicker from "@/components/ui/number-ticker";
 import { useRouter } from "next/navigation";
+
+const taglines = [
+  "Cooking up some food for thought...",
+  "Loading your personalized experience...",
+  "Preparing awesomeness just for you...",
+  "Hang tight, magic is happening...",
+  "Crafting pixels into perfection...",
+  "Almost there, stay inspired...",
+];
 
 const Preloader = () => {
   const [progress, setProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true); // To handle fade-out
+  const [isVisible, setIsVisible] = useState(true); // For fade-out effect
+  const [randomTagline, setRandomTagline] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    // Set a random tagline on initial render
+    setRandomTagline(taglines[Math.floor(Math.random() * taglines.length)]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,7 +32,7 @@ const Preloader = () => {
         }
         return prev + 1;
       });
-    }, 30); // Adjust speed of loading
+    }, 30); // Adjust loading speed
     return () => clearInterval(interval);
   }, []);
 
@@ -27,34 +41,74 @@ const Preloader = () => {
       setTimeout(() => {
         setIsVisible(false); // Trigger fade-out
         setTimeout(() => {
-          router.push("/"); // Redirect to the home page or another route
-        }, 1000); // Ensure fade-out animation completes before navigation
-      }, 500); // Delay before fade-out starts
+          router.push("/"); // Navigate after fade-out
+        }, 1000);
+      }, 500);
     }
   }, [progress, router]);
 
   return (
     <div
-      className={`h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-800 text-white fixed top-0 left-0 z-50 transition-all duration-1000 ${
-        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-110 pointer-events-none"
+      className={`h-screen w-full flex flex-col items-center justify-center bg-gradient-to-tr from-gray-900 to-black fixed top-0 left-0 z-50 transition-opacity duration-1000 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
+      style={{ background: "linear-gradient(to top right, #1a202c, #000)" }}
     >
-      {/* Animated Gradient Circle */}
-      <div
-        className="absolute w-[200%] h-[200%] bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 opacity-10 rounded-full animate-pulse"
-        style={{ zIndex: -1 }}
-      ></div>
+      {/* Animated Geometric Background */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative">
+          <div
+            className="absolute w-[400px] h-[400px] bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 opacity-20 rounded-full animate-pulse"
+            style={{ animationDuration: "3s" }}
+          ></div>
+          <div
+            className="absolute w-[300px] h-[300px] border-[3px] border-dashed border-gray-700 rounded-full animate-spin"
+            style={{ animationDuration: "4s" }}
+          ></div>
+          <div
+            className="absolute w-[200px] h-[200px] border-[2px] border-solid border-gray-600 rounded-full animate-spin-reverse"
+            style={{ animationDuration: "6s" }}
+          ></div>
+        </div>
+      </div>
 
-      {/* Number Ticker */}
-      <div className="flex items-center justify-center">
-        <NumberTicker
-          value={progress}
-          className="text-8xl font-extrabold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
-          decimalPlaces={0}
-        />
-        <span className="text-8xl font-extrabold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 ml-1">
-          %
-        </span>
+      {/* Progress Indicator */}
+      <div className="relative z-10 flex flex-col items-center">
+        {/* Progress Circle */}
+        <div className="w-32 h-32 flex items-center justify-center">
+          <svg className="w-full h-full">
+            <circle
+              className="text-gray-800"
+              cx="50%"
+              cy="50%"
+              r="45%"
+              stroke="currentColor"
+              strokeWidth="5"
+              fill="none"
+            ></circle>
+            <circle
+              className="text-blue-500"
+              cx="50%"
+              cy="50%"
+              r="45%"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeDasharray="283"
+              strokeDashoffset={283 - (283 * progress) / 100}
+              strokeLinecap="round"
+              fill="none"
+              style={{ transition: "stroke-dashoffset 0.3s ease" }}
+            ></circle>
+          </svg>
+          <span className="absolute text-xl font-bold text-white">
+            {progress}%
+          </span>
+        </div>
+
+        {/* Random Tagline */}
+        <p className="text-sm text-gray-400 mt-4 tracking-widest">
+          {randomTagline}
+        </p>
       </div>
     </div>
   );

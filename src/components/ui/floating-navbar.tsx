@@ -61,7 +61,7 @@ export const FloatingNav = ({
             {[...Array(10)].map((_, index) => (
               <motion.div
                 key={index}
-                className="absolute h-full bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"
+                className="absolute h-full bg-gradient-to-b from-black via-slate-700 to-black"
                 style={{
                   width: "10%", // Make each step 10% of the width
                   left: `${index * 10}%`, // Offset each step horizontally

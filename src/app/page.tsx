@@ -55,12 +55,8 @@
 
   const words = [ 
     {
-      text: "Fathan",
+      text: "Pataangg",
       className: "text-indigo-500 dark:text-indigo-400 text-[1.6em] text-bold",
-    },
-    {
-      text: "Kartagama",
-      className: "text-indigo-500 dark:text-indigo-400 text-[1.6em] text-bold ",
     },
   ];
 

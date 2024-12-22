@@ -6,63 +6,42 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import ContactBar from "@/components/contact-bar";
 import Preloader from "@/components/preloader";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const MontserratRegular = Montserrat({
-  weight: "400",
-  style: "normal",
+// Import Google Fonts
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--pregular",
-});
-
-const MontserratBlack = Montserrat({
-  weight: "900",
-  style: "normal",
-  subsets: ["latin"],
-  variable: "--pblack",
+  variable: "--font-montserrat",
 });
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
 
-  // Simulate loading delay
+  // Use a purpose-driven `useEffect` for preloading state
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true); // Trigger fade-out
-      setTimeout(() => {
-        setLoading(false); // Hide preloader completely
-      }, 1500); // Match fade-out duration (1.5 seconds)
-    }, 3000); // Duration for the preloader display
-    return () => clearTimeout(timer); // Cleanup timer
-  }, []);
+    if (loading) {
+      const timer = setTimeout(() => setLoading(false), 5000); // Simulate data preparation or resource loading
+      return () => clearTimeout(timer); // Cleanup timer on unmount
+    }
+  }, [loading]); // Dependency ensures cleanup and updates occur correctly
 
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${MontserratRegular.variable} ${MontserratBlack.variable}`}
-    >
+    <html lang="en" className={montserrat.variable}>
       <head>
         <title>Portfolio | Home</title>
         <meta
-          name="Portfolio"
-          content="My personal portfolio, coded by Pataangg using Nexts."
+          name="description"
+          content="A personal portfolio coded with Next.js, showcasing projects and skills."
         />
       </head>
-      <body>
+      <body className="bg-gray-900 text-white">
         {loading ? (
-          <div
-            className={`fixed inset-0 z-50 transition-opacity duration-[1500ms] ${
-              fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
-          >
-            <Preloader />
-          </div>
+          <Preloader />
         ) : (
           <ThemeProvider
             attribute="class"
@@ -72,7 +51,7 @@ export default function RootLayout({
           >
             <Navbar />
             <ContactBar />
-            {children}
+            <main>{children}</main>
           </ThemeProvider>
         )}
       </body>
