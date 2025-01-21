@@ -1,3 +1,5 @@
+"use client";
+
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaNodeJs, FaPython,FaJava, FaPhp} from "react-icons/fa";
 import { SiNextdotjs, SiMongodb, SiMysql, SiPostgresql, SiTypescript, SiTailwindcss, SiThreedotjs, SiLaravel, SiCplusplus, SiCsharp, SiBlender, SiAdobephotoshop, SiAdobelightroom, SiDavinciresolve} from "react-icons/si";
 import MeteorCard from "@/components/meteor-card";

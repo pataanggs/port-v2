@@ -5,6 +5,7 @@ import DieselDragrace from "@/assets/dieseldragrace.webp";
 import Porto from "@/assets/porto.png";
 import Porto2 from "@/assets/porto2.png";
 import TheForestKeeper from "@/assets/TheForestKeeper.jpg";
+import PahawangWeb from "@/assets/pahawang.png";
 
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
@@ -54,6 +55,12 @@ const GridBackground = () => {
         source={TheForestKeeper}
         title="The Forest Keeper"
         link="https://malasngodingco.itch.io/the-forest-keeper"
+        range={500}
+      />
+      <FloatICon
+        source={PahawangWeb}
+        title="Pahawang Website"
+        link="https://pahawang.my.id"
         range={500}
       />
     </div>

@@ -27,7 +27,7 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <div className="relative w-full z-50">
+    <div className="relative w-fit z-30">
       {/* Floating Navbar */}
       <FloatingNav
         navItems={navItems}

@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const taglines = [
-  "Cooking up some food for thought...",
-  "Loading your personalized experience...",
-  "Preparing awesomeness just for you...",
-  "Hang tight, magic is happening...",
-  "Crafting pixels into perfection...",
-  "Almost there, stay inspired...",
+  "Sabar sebentar ya wo, lagi loading...",
+  "Sabar ya...",
+  "Tapi tunggu dulu, jangan terburu-buru...",
+  "Chef sedang memasak...",
+  "Ksbar!",
+  "Kiw kiw kiw kiw",
 ];
 
 const Preloader = () => {
